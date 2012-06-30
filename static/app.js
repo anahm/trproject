@@ -13,7 +13,7 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
-var serverPath = '//YOUR_APP_ID.appspot.com/';
+var serverPath = '//translatasaurus.appspot.com/';
 
 // The functions triggered by the buttons on the Hangout App
 function countButtonClick() {
