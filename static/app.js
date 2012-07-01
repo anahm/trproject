@@ -162,6 +162,7 @@ function micLoad(selectedLang) {
    		console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
 	      //  document.getElementById('txt').value = mic.value;
+	        alert("speechchange");
 	        $('#txt').value = mic.value;
 	        alert("sending message");
 	      console.log(mic.value);
