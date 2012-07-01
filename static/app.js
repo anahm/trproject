@@ -62,6 +62,15 @@ function getMessageClick() {
   http.send();
 }
 
+function xmlhttpPost(strURL, text) {
+  var xmlHttpReq = false;
+  var self = this;
+  self.xmlHttpReq = new XMLHttpRequest();
+  self.xmlHttpReq.open('POST', strURL, true);
+  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  self.xmlHttpReq.send(text);
+}
+
 function updateStateUi(state) {
   var countElement = document.getElementById('count');
   var stateCount = state['count'];
@@ -81,7 +90,8 @@ function updateParticipantsUi(participants) {
 var mic = document.getElementById('mic');
 mic.onfocus = mic.blur;
 mic.onwebkitspeechchange = function(event) {
-	document.getElementById('txt').value = mike.value;
+	document.getElementById('txt').value = mic.value;
+	xmlhttpPost("/translate2.py", mic.value);
 };
 
 // A function to be run at app initialization time which registers our callbacks
