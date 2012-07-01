@@ -151,8 +151,7 @@ function setText(element, text) {
       '';
 }
 
-mic.onwebkitspeechchange = function(event) {
-
+function micSpeechChange(event) {
 	        alert("speechchange");
 	        $('#txt').value = mic.value;
 	        alert("sending message");
