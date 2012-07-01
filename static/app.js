@@ -163,10 +163,11 @@ function micLoad(selectedLang) {
         mic.onwebkitspeechchange = function(event) {
 	      //  document.getElementById('txt').value = mic.value;
 	        $('#txt').value = mic.value;
-	        alert("sending message");
+	      //  alert("sending message");
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
                 JSON.stringify([mic.value, selectedLang]));
+                alert("sent message2");
         };
                 alert("sent message");
         
@@ -289,6 +290,9 @@ function init() {
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
         updateParticipantsUi(eventObj.participants);
       });
+      
+      gapi.hangout.data.onMessageReceived.add(onMessageReceived);
+
 
       updateStateUi(gapi.hangout.data.getState());
       updateParticipantsUi(gapi.hangout.getParticipants());
