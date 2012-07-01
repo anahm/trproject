@@ -34,11 +34,22 @@
 
 <link rel="stylesheet" href="//translatasaurus.appspot.com/static/style.css" />
 
-<div id="mic_background">
-  <input x-webkit-speech id="mic" />
+<div>
+<div id="mic_background" class="red button">
+  <div id="mic_icon">
+    <input x-webkit-speech id="mic" />
+  </div>
 </div>
-<div> 
-  <p>Collaborate with your friends to count to a big number!</p>
+<div id="chatbox"></div>
+
+<form class="form-search close" name="search_form" action="#" onSubmit="search()">
+    <div id="icn-search"><div id="icn1"></div></div> 
+    <div id="icn-close"><div id="icn2"></div></div>
+    <input type="text" name="searchTerm" id="searchTerm" class="search_input"/>	
+</form>
+<div id="result"></div>
+
+ <p>Collaborate with your friends to count to a big number!</p>
   <dl>
     <dt>Current count:</dt>
     <dd id="count"></dd>
@@ -67,7 +78,6 @@ Select Language:
         <option value="zh">Chinese </option>
 </select>
 Search:
-<input type="text" name="searchTerm" id="searchTerm" class='search_input' size="30">
 <select name="searchLang">
 	<option selected value="en">English </option>
 	<option value="ko">Korean </option>
@@ -75,8 +85,8 @@ Search:
 
 </select>
 <input type=button value="find" onClick="search()"/>
-<div id="result">
 <div style="clear: both;"></div>
+</div>
 
 ]]></Content>
 </Module>
