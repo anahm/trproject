@@ -52,7 +52,7 @@ function resetButtonClick() {
 		if (searchLangSelectHash == null) {
           console.log("sadface searchlanghash failed");
 }		  
-        var searchLang = searchLangSelectHash.options[searchLangSelectHash.selectedIndex].value;
+        //var searchLang = searchLangSelectHash.options[searchLangSelectHash.selectedIndex].value;
 
         var keyword= encodeURIComponent(search_input);
         // Bing Search API 
@@ -155,11 +155,11 @@ function micLoad(selectedLang) {
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
-        console.log(selectedLang);
+    //    console.log(selectedLang);
 
 //        mic.setAttribute('lang', selectedLang);
 		mic.lang = selectedLang;
-   		console.log("ohaiii");
+  // 		console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
 	        document.getElementById('txt').value = mic.value;
 	        //xmlhttpPost("/translate2.py", mic.value);
@@ -275,7 +275,7 @@ function init() {
 
   var apiReady = function(eventObj) {
     if (eventObj.isApiReady) {
-      console.log('API is ready');
+     // console.log('API is ready');
 
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
         updateStateUi(eventObj.state);
@@ -291,7 +291,7 @@ function init() {
       var langSelect = document.getElementById('langselect');
       var selectedLang = langSelect.options[langSelect.selectedIndex].value;
 
-      if (selectedLang != null) {
+      if (selectedLang == null) {
       console.log("selectedlagn complete?");
       }
 
