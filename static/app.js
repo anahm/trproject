@@ -177,7 +177,7 @@ function getTranslatedText(text, transfrom, transto) {
       setText(messageElement, jsonResponse['message']);
     }
   }
-  String post_data = "from=" + transfrom + "&to=" + transto + "&text=" + text;
+  var post_data = "from=" + transfrom + "&to=" + transto + "&text=" + text;
   http.send(post_data);
 }
 
