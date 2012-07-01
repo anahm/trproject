@@ -152,10 +152,11 @@ function setText(element, text) {
 }
 
 function micSpeechChange(event) {
+	        var mic1 = $('#mic');
 	        alert("speechchange");
-	        $('#txt').value = mic.value;
+	        $('#txt').value = mic1.value;
 	        alert("sending message");
-	      console.log(mic.value);
+	      console.log(mic1.value);
 	      console.log($('#txt').value);
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
