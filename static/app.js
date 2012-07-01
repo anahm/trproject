@@ -165,7 +165,8 @@ function micLoad(selectedLang) {
 //        mic.setAttribute('lang', selectedLang);
 		mic.lang = selectedLang;
    		console.log("ohaiii");
-        mic.onwebkitspeechchange = function(event) {
+        
+        /*mic.onwebkitspeechchange = function(event) {
 	      //  document.getElementById('txt').value = mic.value;
 	        alert("speechchange");
 	        $('#txt').value = mic.value;
@@ -177,6 +178,22 @@ function micLoad(selectedLang) {
                 JSON.stringify([mic.value, selectedLang]));
                 alert("sent message2");
         };
+        */
+
+        mic.bind('webkitspeechchange', function(event) {
+    // submit the form
+    	      //  document.getElementById('txt').value = mic.value;
+	        alert("speechchange");
+	        $('#txt').value = mic.value;
+	        alert("sending message");
+	      console.log(mic.value);
+	      console.log($('#txt').value);
+	        //xmlhttpPost("/translate2.py", mic.value);
+            gapi.hangoutdata.sendMessage(
+                JSON.stringify([mic.value, selectedLang]));
+                alert("sent message2");
+
+          });
                 alert("sent message");
         
     } else {
