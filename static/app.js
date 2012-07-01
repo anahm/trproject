@@ -293,7 +293,7 @@ function init() {
         updateParticipantsUi(eventObj.participants);
       });
       
-      gapi.hangout.data.onMessageReceived.add(onMessageReceived);
+    //  gapi.hangout.data.onMessageReceived.add(onMessageReceived);
 
 
       updateStateUi(gapi.hangout.data.getState());
