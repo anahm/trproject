@@ -77,7 +77,6 @@ Select Language:
         <option value="ko">Korean </option>
         <option value="zh">Chinese </option>
 </select>
-<form name="search_bar" method="get" action="search()">
 Search:
 <input type="text" name="searchTerm" id="searchTerm" size="30">
 <select name="searchLang">
@@ -86,8 +85,7 @@ Search:
     <option value="zh">Chinese </option>
 
 </select>
-</form>
-<input type="submit" value="find">
+<input type=button value="find" onClick="search()"/>
 <div style="clear: both;"></div>
 
 ]]></Content>
