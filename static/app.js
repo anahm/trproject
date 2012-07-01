@@ -78,6 +78,12 @@ function updateParticipantsUi(participants) {
   setText(participantsListElement, participants.length.toString());
 }
 
+var mic = document.getElementById('mic');
+mic.onfocus = mic.blur;
+mic.onwebkitspeechchange = function(event) {
+	document.getElementById('txt').value = mike.value;
+};
+
 // A function to be run at app initialization time which registers our callbacks
 function init() {
   console.log('Init app.');
