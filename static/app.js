@@ -149,6 +149,7 @@ function micLoad(selectedLang) {
     if (mic != null) {
         mic.onfocus = mic.blur;
         mic.setAttribute('lang', selectedLang);
+        console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
 	        document.getElementById('txt').value = mic.value;
 	        //xmlhttpPost("/translate2.py", mic.value);
