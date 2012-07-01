@@ -27,24 +27,13 @@
      relative path.
      Tip: You can load it from a local web server such as
      http://localhost/app.js for faster single user development -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="https://www.google.com/jsapi"></script>
 <script src="//translatasaurus.appspot.com/static/app.js"></script>
 
-<style type="text/css">
-<!--
-#mic {
-	color:transparent;
-	background-color:transparent;
-	border:0px;
-	width:15px;
+<link rel="stylesheet" href="//translatasaurus.appspot.com/static/style.css" />
 
-	-webkit-transform: scale(3.0, 3.0);
-	-moz-transform: scale(3.0, 3.0);
-	-ms-transform: scale(3.0, 3.0);
-	transform: scale(3.0, 3.0);
-}	
--->
-</style>
 <h1><img src="//translatasaurus.appspot.com/static/hangouts-logo.png" 
     alt="Google+ Hangouts Logo" height="50" width="50">Starter App</h1>
 <div> 
