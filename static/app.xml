@@ -22,6 +22,7 @@
 <!DOCTYPE html>
 <!-- The hangout API JavaScript. Always include this first -->
 <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
+<script src="https://www.google.com/jsapi"></script>
 
 <!-- The JavaScript for this app. This must always be a full URL not a
      relative path.
@@ -72,8 +73,20 @@
 Select Language:
 <select id="langselect">
 	<option selected value="en">English </option>
-        <option selected value="ko">Korean </option>
+        <option value="ko">Korean </option>
+        <option value="zh">Chinese </option>
 </select>
+<form name="search_bar" method="get" action="search()">
+Search:
+<input type="text" name="searchTerm" id="searchTerm" size="30">
+<select name="searchLang">
+	<option selected value="en">English </option>
+	<option value="ko">Korean </option>
+    <option value="zh">Chinese </option>
+
+</select>
+</form>
+<input type="submit" value="find">
 <div style="clear: both;"></div>
 
 ]]></Content>

@@ -39,6 +39,64 @@ function resetButtonClick() {
   gapi.hangout.data.submitDelta({'count': '0'});
 }
 
+function search() {
+	var term = document.forms["search_bar"]["searchTerm"].value;
+	var langSelect = document.getElementById('langselect');
+    var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+
+	var searchLangSelect = document.getElementById('searchLang');
+	var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
+	OnLoad(term);
+    //send(term, searchLang, selectedLang);	
+}
+
+
+ google.load('search', '1');
+
+function searchComplete(searcher) {
+  // Check that we got results
+  if (searcher.results && searcher.results.length > 0) {
+    // Grab our content div, clear it.
+    var contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+
+    // Loop through our results, printing them to the page.
+    var results = searcher.results;
+    for (var i = 0; i < 2; i++) {
+      // For each result write its image
+      var result = results[i];
+      var imgContainer = document.createElement('div');
+
+      var newImg = document.createElement('img');
+      // There is also a result.url property which has the escaped version
+      newImg.src = result.tbUrl;
+
+      imgContainer.appendChild(newImg);
+
+      // Put our image in the content
+        contentDiv.appendChild(imgContainer);
+    }
+  }
+}
+
+
+
+function OnLoad(text) {
+  // Our ImageSearch instance.
+  var imageSearch = new google.search.ImageSearch();
+
+  // Here we set a callback so that anytime a search is executed, it will call
+  // the searchComplete function and pass it our ImageSearch searcher.
+  // When a search completes, our ImageSearch object is automatically
+  // populated with the results.
+  imageSearch.setSearchCompleteCallback(this, searchComplete, [imageSearch]);
+
+  imageSearch.execute(text);
+                // Include the required Google branding
+        google.search.Search.getBranding('branding');
+}
+
+
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
   element.innerHTML = typeof text === 'string' ?
@@ -58,6 +116,36 @@ function onMessageReceived(event) {
      console.log(e);
   }
 }
+
+// Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      function onLoadTransliterate() {
+        if (selectedLang.equals("zh")) {
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.CHINESE],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+
+        // Create an instance on TransliterationControl with the required
+        // options.
+        var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textbox with id
+        // 'transliterateTextarea'.
+        control.makeTransliteratable(['searchTerm']);
+       }
+      }
+
+google.setOnLoadCallback(onLoadTransliterate);
+      
 
 function getMessageClick() {
   console.log('Requesting message from main.py');
