@@ -18,7 +18,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from translate import power_translate
 
-class MainHandler(webapp.RequestHandler):
+class MainHandler(webapp2.RequestHandler):
     def get(self):
         # Set the cross origin resource sharing header to allow AJAX
         self.response.headers.add_header("Access-Control-Allow-Origin", "*")
@@ -34,7 +34,7 @@ class MainHandler(webapp.RequestHandler):
 
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
+    application = webapp2.WSGIApplication([('/', MainHandler)],
                                          debug=True)
     util.run_wsgi_app(application)
 
