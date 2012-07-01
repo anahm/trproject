@@ -152,6 +152,11 @@ function setText(element, text) {
 }
 
 function micLoad(selectedLang) {
+}
+    var langSelect = document.getElementById('langselect');
+      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+
+
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
@@ -177,7 +182,7 @@ function micLoad(selectedLang) {
     } else {
         console.log("sadface no mic");
     }
-}
+
 
 function onMessageReceived(event) {
   alert("on message received");
