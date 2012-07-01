@@ -18,6 +18,8 @@
  */ -->
   <ModulePrefs title="Starter App">
     <Require feature="rpc"/>
+    <Require feature="views" />
+    <Require feature="locked-domain" />
   </ModulePrefs>
   <Content type="html"><![CDATA[
 <!DOCTYPE html>
