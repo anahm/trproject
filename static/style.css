@@ -3,11 +3,185 @@ html {
     text-size: 13em;
 }
 
+#search {
+	padding:10px;
+
+	border:1px solid #707070;
+	
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius:5px;
+	
+	-webkit-box-shadow:inset 0 1px 0 #fff;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+	
+	background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(155,155,155)),
+    color-stop(0.5, rgb(169,169,169)),
+    color-stop(0.5, rgb(202,202,202)),
+    color-stop(25.5, rgb(211,211,211)));
+	
+	background:-moz-linear-gradient(
+    center bottom,
+    rgb(155,155,155) 0%,
+    rgb(169,169,169) 50%,
+    rgb(202,202,202) 50%,
+    rgb(211,211,211) 2550%);
+}
+
+.form-search {
+	width:80%;
+	position:relative;
+	border:1px solid #747474;
+	height:32px;
+	
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius:3px;
+	
+	-webkit-box-shadow:inset 0 1px 1px #575555, 0 1px 0 #fff;
+    -moz-box-shadow: inset 0 1px 1px #575555, 0 1px 0 #fff;
+    box-shadow: inset 0 1px 1px #575555, 0 1px 0 #fff;
+	
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-0-transition: all .2s ease-out;
+}
+
+.form-search input {
+	width:83%;
+	height:34px;
+	border:none;
+	padding:0 27px 0 6px;
+	font:13px Helvetica, Arial, sans-serif;
+	color:#6e7074;
+	text-shadow:0 1px 0 #fff;
+	
+	background:none;
+	
+}
+
+
+.form-search.close {
+	background: -webkit-gradient(linear, 0 bottom, 0 top, from(#ebebeb ), to(#bcbcbc));
+    background: -moz-linear-gradient(-90deg, #bcbcbc, #ebebeb );
+}
+
+#icn-search:hover, #icn-close:hover {
+	cursor:pointer
+}
+
+.form-search.close #icn-search {
+	width:7px;
+	height:7px;
+	position:relative;
+	position:absolute;
+	top:9px;
+	right:10px;
+	border:2px solid #7e7f84;
+	
+	-webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+	
+}
+
+.form-search.close #icn1 {
+	width:2px;
+	height:6px;
+	background:#7e7f84;
+	position:absolute;
+	right:-1px;
+	top:7px;
+	
+	-moz-transform: rotate(-25deg);  
+    -webkit-transform: rotate(-25deg);
+}
+
+ .form-search.expand #icn2 {
+	position:absolute;
+	width:2px;
+	height:13px;
+	background:#597C84;
+	
+	-moz-transform: rotate(86deg);  
+    -webkit-transform: rotate(86deg);
+
+}
+
+#chatbox {
+    padding:10px;
+    text-align: left;
+    width: 80%px;
+    height: 120px;
+    font-family: Tahoma, sans-serif;
+}
+
+.button {
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	vertical-align: baseline;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+/* red */
+.red {
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+.red:hover {
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top,  #c9151b,  #a11115);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+}
+.red:active {
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top,  #aa1317,  #ed1c24);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+}
+
 #mic_background {
-    background-color: red;
-    size:150px;
+    height:60px;
+    width:60px;
+    border-radius:15px;
+    text-align:center;
     margin-left:auto;
     margin-right:auto;
+    margin-top:10px;
+}
+
+#mic_icon {
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:22px;
+    text-align:center;
 }
 
 #mic{
