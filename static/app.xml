@@ -41,12 +41,14 @@
   </div>
 </div>
 <div id="chatbox"></div>
-
+<!--
 <form class="form-search close" name="search_form" action="#" onSubmit="search()">
+    -->
     <div id="icn-search"><div id="icn1"></div></div> 
     <div id="icn-close"><div id="icn2"></div></div>
     <input type="text" name="searchTerm" id="searchTerm" class="search_input"/>	
-</form>
+<!--
+</form> -->
 <div id="result"></div>
 
      Select Language:
