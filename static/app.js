@@ -302,7 +302,7 @@ function init() {
       var langSelect = document.getElementById('langselect');
       var selectedLang = langSelect.options[langSelect.selectedIndex].value;
 
-      if (selectedLang == null) {
+      if (selectedLang != null) {
       console.log("selectedlagn complete?");
       }
 
