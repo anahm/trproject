@@ -39,6 +39,7 @@ html {
 	border:1px solid #747474;
 	height:32px;
 	
+	
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius:3px;
@@ -50,6 +51,9 @@ html {
 	-webkit-transition: all .2s ease-out;
 	-moz-transition: all .2s ease-out;
 	-0-transition: all .2s ease-out;
+
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .form-search input {
