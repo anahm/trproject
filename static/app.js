@@ -155,37 +155,30 @@ function setText(element, text) {
 }
 
 function micLoad(selectedLang) {
-}
- //   var langSelect = $('#langselect');
+  //   var langSelect = $('#langselect');
   //    var selectedLang = langSelect.options[langSelect.selectedIndex].value;
-
 
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
-    //    console.log(selectedLang);
 
-//        mic.setAttribute('lang', selectedLang);
-	//	mic.lang = selectedLang;
-   		console.log("ohaiii");
-        
-        /*mic.onwebkitspeechchange = function(event) {
-	      //  document.getElementById('txt').value = mic.value;
+        mic.setAttribute('lang', selectedLang);
+	    //mic.lang = selectedLang;
+        console.log(mic);
+       /* mic.onwebkitspeechchange = function(event) {
 	        alert("speechchange");
 	        $('#txt').value = mic.value;
 	        alert("sending message");
-	      console.log(mic.value);
-	      console.log($('#txt').value);
+	        console.log(mic.value);
+	        console.log($('#txt').value);
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
-                JSON.stringify([mic.value, selectedLang]));
-                alert("sent message2");
-        };
-        */
+            JSON.stringify([mic.value, selectedLang]));
+            alert("sent message2");
+        }; */
 
-        mic.bind('webkitspeechchange', function(event) {
-    // submit the form
-    	      //  document.getElementById('txt').value = mic.value;
+        mic.bind('webkitspeechchange', function() {
+    	    //  document.getElementById('txt').value = mic.value;
 	        alert("speechchange");
 	        $('#txt').value = mic.value;
 	        alert("sending message");
@@ -197,12 +190,12 @@ function micLoad(selectedLang) {
                 alert("sent message2");
 
           });
-                alert("sent message");
         
+        console.log("ALLL DONENEE");
     } else {
         console.log("sadface no mic");
     }
-
+}
 
 function onMessageReceived(event) {
   alert("on message received");
