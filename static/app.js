@@ -159,12 +159,13 @@ function micLoad(selectedLang) {
 
 //        mic.setAttribute('lang', selectedLang);
 		mic.lang = selectedLang;
-  // 		console.log("ohaiii");
+   		console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
 	      //  document.getElementById('txt').value = mic.value;
 	        $('#txt').value = mic.value;
-	      //  alert("sending message");
+	        alert("sending message");
 	      console.log(mic.value);
+	      console.log($('#txt').value);
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
                 JSON.stringify([mic.value, selectedLang]));
