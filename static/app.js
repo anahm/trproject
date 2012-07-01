@@ -47,6 +47,7 @@ function search() {
 	var searchLangSelect = document.getElementById('searchLang');
 	var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
 	OnLoad(term);
+    getTranslatedText(data[0], data[1], selectedLang);
     //send(term, searchLang, selectedLang);	
 }
 
