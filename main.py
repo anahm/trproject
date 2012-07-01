@@ -16,6 +16,7 @@
 #
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
+from translate import power_translate
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
@@ -23,6 +24,13 @@ class MainHandler(webapp.RequestHandler):
         self.response.headers.add_header("Access-Control-Allow-Origin", "*")
         # Print some JSON
         self.response.out.write('{"message":"Hello World!"}\n')
+
+    def post(self):
+        fromLang = self.request.get("from")
+        toLang = self.request.get("to")
+        origText = self.request.get("text")
+        transText = power_translate(origText, fromLang, toLang)
+        self.response.out.write('{"message":' + transText + '}\n')
 
 
 def main():
