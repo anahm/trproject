@@ -39,6 +39,12 @@ function resetButtonClick() {
   gapi.hangout.data.submitDelta({'count': '0'});
 }
 
+$(".search_input").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#id_of_button").click();
+    }
+});
+
     function search() 
     {
  	//var term = document.forms["search_bar"]["searchTerm"].value;
@@ -153,17 +159,17 @@ function setText(element, text) {
 
 function micLoad(selectedLang) {
 }
-    var langSelect = $('#langselect');
-      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+ //   var langSelect = $('#langselect');
+  //    var selectedLang = langSelect.options[langSelect.selectedIndex].value;
 
 
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
-        console.log(selectedLang);
+    //    console.log(selectedLang);
 
 //        mic.setAttribute('lang', selectedLang);
-		mic.lang = selectedLang;
+	//	mic.lang = selectedLang;
    		console.log("ohaiii");
         
         /*mic.onwebkitspeechchange = function(event) {
@@ -190,7 +196,7 @@ function micLoad(selectedLang) {
 	      console.log($('#txt').value);
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
-                JSON.stringify([mic.value, selectedLang]));
+                JSON.stringify([mic.value, 'en']));
                 alert("sent message2");
 
           });
