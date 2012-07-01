@@ -44,8 +44,15 @@ function resetButtonClick() {
  	//var term = document.forms["search_bar"]["searchTerm"].value;
     
         var search_input = $(".search_input").val();
-        	var searchLangSelect = document.getElementById('searchLang');
-	//var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
+        var searchLangSelect = document.getElementById('searchLang');
+		if (searchLangSelect == null)  {
+		 console.log("searchLangSelect failed");
+		}
+		var searchLangSelectHash = $("#searchLang");
+		if (searchLangSelectHash == null) {
+          console.log("sadface searchlanghash failed");
+}		  
+//var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
 
         var keyword= encodeURIComponent(search_input);
         // Bing Search API 
