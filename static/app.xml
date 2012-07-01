@@ -49,31 +49,9 @@
 </form>
 <div id="result"></div>
 
- <p>Collaborate with your friends to count to a big number!</p>
-  <dl>
-    <dt>Current count:</dt>
-    <dd id="count"></dd>
-    <dt>Player count:</dt>
-    <dd id="participants"></dd>
-  </dl>
-   <input type=button value="Click Me!" id="countButton"
-      onClick="countButtonClick()"/>
-  <input type=button value="Reset" id="resetButton"
-      onClick="resetButtonClick()"/>
-  <textarea id="txt"></textarea>
-</div>
-<div>
-  <p>Fetch some JSON from main.py</p>
-  <dl>
-    <dt>Message:</dt>
-    <dd id="message"></dd>
-  </dl>
-  <input type=button value="Get Message" id="getMessageButton"
-      onClick="getMessageClick()"/>
-</div>
-Select Language:
+     Select Language:
     <select id="langselect">
-	<option selected value="en">English </option>
+	    <option selected value="en">English </option>
         <option value="ko">Korean </option>
         <option value="zh">Chinese </option>
 </select>
