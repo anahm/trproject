@@ -24,10 +24,20 @@ class MainHandler(webapp.RequestHandler):
         # Print some JSON
         self.response.out.write('{"message":"Hello World!"}\n')
 
+class TranslateHandler(webapp.RequestHandler):
+    def post(self):
+        fromLang = cgi.escape(self.request.get("from"))
+        toLang = cgi.escape(self.request.get("to"))
+        origText = cgi.escape(self.request.get("text"))
+        transText = power_translate(origText, fromLang, toLang)
+        jsonText = '{"message":' + transText + '}\n'
+        self.response.out.write(jsonText)
+
+application = webapp.WSGIApplication([('/', MainHandler),
+                                      ('/translate', TranslateHandler)],
+                                         debug=True)
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
-                                         debug=True)
     util.run_wsgi_app(application)
 
 if __name__ == '__main__':

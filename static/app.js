@@ -111,7 +111,7 @@ function onMessageReceived(event) {
      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
-     send(data[0], data[1], selectedLang);
+     getTranslatedText(data[0], data[1], selectedLang);
   } catch (e) {
      console.log(e);
   }
@@ -163,17 +163,22 @@ function getMessageClick() {
   http.send();
 }
 
-function send(strURL, text, transfrom, transto) {
-//  var xmlHttpReq = false;
-//  var self = this;
-//  self.xmlHttpReq = new XMLHttpRequest();
-//  self.xmlHttpReq.open('POST', strURL, true);
-//  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//  self.xmlHttpReq.send(text);
-  jQuery.ajax({
-	type: "POST",
-	data: {textString : text, translatefrom : transfrom, translateto : transto}});
+function getTranslatedText(text, transfrom, transto) {
+  console.log('Requesting translation from translate.py');
+  var http = new XMLHttpRequest();
+  http.open('POST', (serverPath + "/translate"));
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = JSON.parse(http.responseText);
+      console.log(jsonResponse);
 
+      var messageElement = document.getElementById('message');
+      setText(messageElement, jsonResponse['message']);
+    }
+  }
+  String post_data = "from=" + transfrom + "&to=" + transto + "&text=" + text;
+  http.send(post_data);
 }
 
 function updateStateUi(state) {
