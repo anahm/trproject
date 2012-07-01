@@ -174,6 +174,7 @@ function micLoad(selectedLang) {
 function onMessageReceived(event) {
   alert("on message received");
   try {
+  	alert("moogle");
      var data = JSON.parse(event.message);
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
