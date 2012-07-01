@@ -52,7 +52,7 @@ function resetButtonClick() {
 		if (searchLangSelectHash == null) {
           console.log("sadface searchlanghash failed");
 }		  
-//var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
+        var searchLang = searchLangSelectHash.options[searchLangSelect.selectedIndex].value;
 
         var keyword= encodeURIComponent(search_input);
         // Bing Search API 
@@ -156,6 +156,7 @@ function micLoad(selectedLang) {
     if (mic != null) {
         mic.onfocus = mic.blur;
         console.log(selectedLang);
+        console.log(mic.getAttribute('id');
         mic.setAttribute('lang', selectedLang);
         console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
