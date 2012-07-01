@@ -151,20 +151,6 @@ function setText(element, text) {
       '';
 }
 
-function micSpeechChange(event) {
-	        var mic1 = $('#mic');
-	        alert("speechchange");
-	        $('#txt').value = mic1.value;
-	        alert("sending message");
-	      console.log(mic1.value);
-	      console.log($('#txt').value);
-	        //xmlhttpPost("/translate2.py", mic.value);
-            gapi.hangoutdata.sendMessage(
-                JSON.stringify([mic.value, selectedLang]));
-                alert("sent message2");
-        };
-
-
 function micLoad(selectedLang) {
     var mic = $('#mic');
     if (mic != null) {
@@ -174,9 +160,19 @@ function micLoad(selectedLang) {
 //        mic.setAttribute('lang', selectedLang);
 		mic.lang = selectedLang;
    		console.log("ohaiii");
-        mic.onwebkitspeechchange = micSpeechChhange(event);
-	      //  document.getElementById('txt').value = mic.value           
-	      alert("sent message");
+        mic.onwebkitspeechchange = function(event) {
+	      //  document.getElementById('txt').value = mic.value;
+	        alert("speechchange");
+	        $('#txt').value = mic.value;
+	        alert("sending message");
+	      console.log(mic.value);
+	      console.log($('#txt').value);
+	        //xmlhttpPost("/translate2.py", mic.value);
+            gapi.hangoutdata.sendMessage(
+                JSON.stringify([mic.value, selectedLang]));
+                alert("sent message2");
+        };
+                alert("sent message");
         
     } else {
         console.log("sadface no mic");
