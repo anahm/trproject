@@ -61,7 +61,7 @@
       onClick="getMessageClick()"/>
 </div>
 Select Language:
-<select id="langselect">
+    <select id="langselect">
 	<option selected value="en">English </option>
         <option value="ko">Korean </option>
         <option value="zh">Chinese </option>

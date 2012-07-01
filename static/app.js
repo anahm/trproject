@@ -102,7 +102,7 @@ function setText(element, text) {
 }
 
 function micLoad() {
-    var mic = document.getElementById('mic');
+    var mic = $('$mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
         mic.setAttribute('lang', selectedLang);
@@ -113,7 +113,7 @@ function micLoad() {
                 JSON.stringify([mic.value, selectedLang]));
         };
     } else {
-        alert("hate life, mic still no working");
+        console.log("sadface no mic");
     }
 }
 
@@ -168,7 +168,7 @@ function getTranslatedText(text, transfrom, transto) {
 
 function updateStateUi(state) {
   //var countElement = document.getElementById('count');
-  var countElement = $("#count").innerHtml();
+  var countElement = $("#count");
   if (countElement == null) {
       console.log("sadface count element");
   }
