@@ -39,7 +39,50 @@ function resetButtonClick() {
   gapi.hangout.data.submitDelta({'count': '0'});
 }
 
-function search() {
+    function search() 
+    {
+ 	//var term = document.forms["search_bar"]["searchTerm"].value;
+    
+        var search_input = $(".search_input").val();
+        	var searchLangSelect = document.getElementById('searchLang');
+	var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
+
+        var keyword= encodeURIComponent(search_input);
+        // Bing Search API 
+        var bing_url='http://api.search.live.net/json.aspx?JsonType=callback&JsonCallback=?&Appid=5B0D22D739247C06BE7F990ECBEC1A144F9B7C39&query='+keyword+'&sources=image'; 
+
+    $.ajax
+    ({
+        type: "GET",
+        url: bing_url,
+        dataType:"jsonp",
+        success: function(response)
+        {
+            $("#result").html('');
+            if(response.SearchResponse.Image.Results.length)
+            {
+                $.each(response.SearchResponse.Image.Results, function(i,data)
+                {
+                    var title=data.Thumbnail.Url;
+                    //var dis=data.Description;
+                    var url=data.MediaUrl;
+
+
+                    var final="<div class='webresult'><div class='title'><img src='"+title+"'>";
+
+                    $("#result").append(final); // Result
+
+                });
+            }
+            else
+            {
+                $("#result").html("<div id='no'>No Results</div>");
+            }
+        }
+    });
+};
+
+/* function search() {
 	var term = document.forms["search_bar"]["searchTerm"].value;
 	var langSelect = document.getElementById('langselect');
     var selectedLang = langSelect.options[langSelect.selectedIndex].value;
@@ -92,7 +135,7 @@ function OnLoad(text) {
                 // Include the required Google branding
         google.search.Search.getBranding('branding');
 }
-
+*/
 
 var forbiddenCharacters = /[^a-zA-Z!0-9_\- ]/;
 function setText(element, text) {
@@ -131,7 +174,37 @@ function onMessageReceived(event) {
      console.log(e);
   }
 }
+/*
+// Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
 
+      function onLoadTransliterate() {
+        if (selectedLang == "zh") {
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.CHINESE],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+
+        // Create an instance on TransliterationControl with the required
+        // options.
+        var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textbox with id
+        // 'transliterateTextarea'.
+        control.makeTransliteratable(['searchTerm']);
+       }
+      }
+
+google.setOnLoadCallback(onLoadTransliterate);
+      
+*/
 function getMessageClick() {
   console.log('Requesting message from main.py');
   var http = new XMLHttpRequest();
@@ -165,6 +238,7 @@ function getTranslatedText(text, transfrom, transto) {
   var post_data = "from=" + transfrom + "&to=" + transto + "&text=" + text;
   http.send(post_data);
 }
+
 
 function updateStateUi(state) {
   //var countElement = document.getElementById('count');

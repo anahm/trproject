@@ -67,7 +67,7 @@ Select Language:
         <option value="zh">Chinese </option>
 </select>
 Search:
-<input type="text" name="searchTerm" id="searchTerm" size="30">
+<input type="text" name="searchTerm" id="searchTerm" class='search_input' size="30">
 <select name="searchLang">
 	<option selected value="en">English </option>
 	<option value="ko">Korean </option>
