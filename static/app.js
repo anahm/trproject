@@ -39,14 +39,13 @@ function resetButtonClick() {
   gapi.hangout.data.submitDelta({'count': '0'});
 }
 
-$(".search_input").keyup(function(event){
-    if(event.keyCode == 13){
-        search();
-    }
-});
+$(document).ready(function()
+{
 
-    function search() 
-    {
+$(".search_input").keyup(function() 
+{
+        if(event.keyCode == 13){    
+
  	//var term = document.forms["search_bar"]["searchTerm"].value;
     
         var search_input = $(".search_input").val();
@@ -79,10 +78,7 @@ $(".search_input").keyup(function(event){
                     var title=data.Thumbnail.Url;
                     //var dis=data.Description;
                     var url=data.MediaUrl;
-
-
                     var final="<div class='webresult'><div class='title'><img src='"+title+"'>";
-
                     $("#result").append(final); // Result
 
                 });
@@ -93,7 +89,8 @@ $(".search_input").keyup(function(event){
             }
         }
     });
-};
+}});
+});
 
 /* function search() {
 	var term = document.forms["search_bar"]["searchTerm"].value;
