@@ -162,7 +162,7 @@ function micLoad(selectedLang) {
   // 		console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
 	      //  document.getElementById('txt').value = mic.value;
-	        $(#txt).value = mic.value;
+	        $('#txt').value = mic.value;
 	        alert("sending message");
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
