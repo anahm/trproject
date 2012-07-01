@@ -62,7 +62,7 @@ Search:
     <option value="zh">Chinese </option>
 
 </select>
-<input type=button value="find" onClick="search()"/>
+<!-- <input type=button value="find" onClick="search()"/> -->
 <div style="clear: both;"></div>
 </div>
 
