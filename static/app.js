@@ -144,8 +144,8 @@ function setText(element, text) {
       '';
 }
 
-function micLoad() {
-    var mic = document.getElementById('mic');
+function micLoad(selectedLang) {
+    var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
         mic.setAttribute('lang', selectedLang);
@@ -156,7 +156,7 @@ function micLoad() {
                 JSON.stringify([mic.value, selectedLang]));
         };
     } else {
-        alert("hate life, mic still no working");
+        console.log("sadface no mic");
     }
 }
 
@@ -164,8 +164,6 @@ function onMessageReceived(event) {
   alert("on message received");
   try {
      var data = JSON.parse(event.message);
-     var langSelect = document.getElementById('langselect');
-     var selectedLang = langSelect.options[langSelect.selectedIndex].value;
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
      getTranslatedText(data[0], data[1], selectedLang);
@@ -242,7 +240,7 @@ function getTranslatedText(text, transfrom, transto) {
 
 function updateStateUi(state) {
   //var countElement = document.getElementById('count');
-  var countElement = $("#count").innerHtml();
+  var countElement = $("#count");
   if (countElement == null) {
       console.log("sadface count element");
   }
@@ -277,10 +275,16 @@ function init() {
       });
 
       updateStateUi(gapi.hangout.data.getState());
-      console.log("state ui..");
       updateParticipantsUi(gapi.hangout.getParticipants());
-      console.log("where i would add mic load");
-      micLoad();
+
+      var langSelect = document.getElementById('langselect');
+      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+
+      if (selectedLang != null) {
+      console.log("selectedlagn complete?");
+      }
+
+      micLoad(selectedLang);
       console.log("complete!");
 
       api.hangout.onApiReady.remove(apiReady);
