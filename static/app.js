@@ -148,6 +148,7 @@ function micLoad(selectedLang) {
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
+        console.log(selectedLang);
         mic.setAttribute('lang', selectedLang);
         console.log("ohaiii");
         mic.onwebkitspeechchange = function(event) {
