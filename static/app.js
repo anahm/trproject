@@ -151,17 +151,8 @@ function setText(element, text) {
       '';
 }
 
-function micLoad(selectedLang) {
-    var mic = $('#mic');
-    if (mic != null) {
-        mic.onfocus = mic.blur;
-        console.log(selectedLang);
+mic.onwebkitspeechchange = function(event) {
 
-//        mic.setAttribute('lang', selectedLang);
-		mic.lang = selectedLang;
-   		console.log("ohaiii");
-        mic.onwebkitspeechchange = function(event) {
-	      //  document.getElementById('txt').value = mic.value;
 	        alert("speechchange");
 	        $('#txt').value = mic.value;
 	        alert("sending message");
@@ -172,7 +163,20 @@ function micLoad(selectedLang) {
                 JSON.stringify([mic.value, selectedLang]));
                 alert("sent message2");
         };
-                alert("sent message");
+
+
+function micLoad(selectedLang) {
+    var mic = $('#mic');
+    if (mic != null) {
+        mic.onfocus = mic.blur;
+        console.log(selectedLang);
+
+//        mic.setAttribute('lang', selectedLang);
+		mic.lang = selectedLang;
+   		console.log("ohaiii");
+        mic.onwebkitspeechchange = micSpeechChhange(event);
+	      //  document.getElementById('txt').value = mic.value           
+	      alert("sent message");
         
     } else {
         console.log("sadface no mic");
