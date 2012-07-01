@@ -15,28 +15,6 @@
 */
 var serverPath = '//translatasaurus.appspot.com/';
 
-var langSelect = document.getElementById('langselect');
-if (langSelect != null) {
-    var selectedLang = langSelect.options[langSelect.selectedIndex].value;
-} else {
-    alert("blargl, need to fix lang");
-    var selectedLang = 'en';
-}
-var mic = document.getElementById('mic');
-if (mic != null) {
-    mic.onfocus = mic.blur;
-    mic.setAttribute('lang', selectedLang);
-    mic.onwebkitspeechchange = function(event) {
-        
-	    document.getElementById('txt').value = mic.value;
-	    //xmlhttpPost("/translate2.py", mic.value);
-        gapi.hangoutdata.sendMessage(
-        JSON.stringify([mic.value, selectedLang]));
-    };
-} else {
-    alert("blargl, need to fix mic");
-}
-
 // The functions triggered by the buttons on the Hangout App
 function countButtonClick() {
   // Note that if you click the button several times in succession,
@@ -112,12 +90,8 @@ function resetButtonClick() {
 	var searchLangSelect = document.getElementById('searchLang');
 	var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
 	OnLoad(term);
-    getTranslatedText(data[0], data[1], selectedLang);
     //send(term, searchLang, selectedLang);	
 }
-
-
- google.load('search', '1');
 
 function searchComplete(searcher) {
   // Check that we got results
@@ -170,9 +144,25 @@ function setText(element, text) {
       '';
 }
 
+function micLoad() {
+    var mic = document.getElementById('mic');
+    if (mic != null) {
+        mic.onfocus = mic.blur;
+        mic.setAttribute('lang', selectedLang);
+        mic.onwebkitspeechchange = function(event) {
+	        document.getElementById('txt').value = mic.value;
+	        //xmlhttpPost("/translate2.py", mic.value);
+            gapi.hangoutdata.sendMessage(
+                JSON.stringify([mic.value, selectedLang]));
+        };
+    } else {
+        alert("hate life, mic still no working");
+    }
+}
+
 function onMessageReceived(event) {
+  alert("on message received");
   try {
-     alert("we got something!");
      var data = JSON.parse(event.message);
      var langSelect = document.getElementById('langselect');
      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
@@ -251,7 +241,11 @@ function getTranslatedText(text, transfrom, transto) {
 
 
 function updateStateUi(state) {
-  var countElement = document.getElementById('count');
+  //var countElement = document.getElementById('count');
+  var countElement = $("#count").innerHtml();
+  if (countElement == null) {
+      console.log("sadface count element");
+  }
   var stateCount = state['count'];
   if (!stateCount) {
     setText(countElement, 'Probably 0');
@@ -277,14 +271,19 @@ function init() {
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
         updateStateUi(eventObj.state);
       });
+
       gapi.hangout.onParticipantsChanged.add(function(eventObj) {
         updateParticipantsUi(eventObj.participants);
       });
 
       updateStateUi(gapi.hangout.data.getState());
+      console.log("state ui..");
       updateParticipantsUi(gapi.hangout.getParticipants());
+      console.log("where i would add mic load");
+      micLoad();
+      console.log("complete!");
 
-      gapi.hangout.onApiReady.remove(apiReady);
+      api.hangout.onApiReady.remove(apiReady);
     }
   };
 
@@ -294,3 +293,5 @@ function init() {
 }
 
 gadgets.util.registerOnLoadHandler(init);
+
+
