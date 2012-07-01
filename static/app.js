@@ -75,10 +75,23 @@ function getMessageClick() {
   http.send();
 }
 
+function send(strURL, text, transfrom, transto) {
+//  var xmlHttpReq = false;
+//  var self = this;
+//  self.xmlHttpReq = new XMLHttpRequest();
+//  self.xmlHttpReq.open('POST', strURL, true);
+//  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//  self.xmlHttpReq.send(text);
+  jQuery.ajax({
+	type: "POST",
+	data: {textString : text, translatefrom : transfrom, translateto : transto}});
+
+}
+
 function getTranslatedText(text, transfrom, transto) {
   console.log('Requesting translation from translate.py');
   var http = new XMLHttpRequest();
-  http.open('POST', serverPath);
+  http.open('POST', (serverPath + "/translate"));
   http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

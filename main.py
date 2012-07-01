@@ -16,26 +16,28 @@
 #
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-from translate import power_translate
 
-class MainHandler(webapp2.RequestHandler):
+class MainHandler(webapp.RequestHandler):
     def get(self):
         # Set the cross origin resource sharing header to allow AJAX
         self.response.headers.add_header("Access-Control-Allow-Origin", "*")
         # Print some JSON
         self.response.out.write('{"message":"Hello World!"}\n')
 
+class TranslateHandler(webapp.RequestHandler):
     def post(self):
-        fromLang = self.request.get("from")
-        toLang = self.request.get("to")
-        origText = self.request.get("text")
+        fromLang = cgi.escape(self.request.get("from"))
+        toLang = cgi.escape(self.request.get("to"))
+        origText = cgi.escape(self.request.get("text"))
         transText = power_translate(origText, fromLang, toLang)
-        self.response.out.write('{"message":' + transText + '}\n')
+        jsonText = '{"message":' + transText + '}\n'
+        self.response.out.write(jsonText)
 
+application = webapp.WSGIApplication([('/', MainHandler),
+                                      ('/translate', TranslateHandler)],
+                                         debug=True)
 
 def main():
-    application = webapp2.WSGIApplication([('/', MainHandler)],
-                                         debug=True)
     util.run_wsgi_app(application)
 
 if __name__ == '__main__':
