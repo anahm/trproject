@@ -164,6 +164,7 @@ function micLoad(selectedLang) {
 	      //  document.getElementById('txt').value = mic.value;
 	        $('#txt').value = mic.value;
 	      //  alert("sending message");
+	      console.log(mic.value);
 	        //xmlhttpPost("/translate2.py", mic.value);
             gapi.hangoutdata.sendMessage(
                 JSON.stringify([mic.value, selectedLang]));
