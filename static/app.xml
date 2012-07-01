@@ -22,13 +22,14 @@
 <!DOCTYPE html>
 <!-- The hangout API JavaScript. Always include this first -->
 <script src="//hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0"></script>
-<script src="https://www.google.com/jsapi"></script>
 
 <!-- The JavaScript for this app. This must always be a full URL not a
      relative path.
      Tip: You can load it from a local web server such as
      http://localhost/app.js for faster single user development -->
 <script src="//translatasaurus.appspot.com/static/app.js"></script>
+<script src="https://www.google.com/jsapi"></script>
+
 <style type="text/css">
 <!--
 #mic {
