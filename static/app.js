@@ -45,7 +45,7 @@ function resetButtonClick() {
     
         var search_input = $(".search_input").val();
         	var searchLangSelect = document.getElementById('searchLang');
-	var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
+	//var searchLang = searchLangSelect.options[searchLangSelect.selectedIndex].value;
 
         var keyword= encodeURIComponent(search_input);
         // Bing Search API 
