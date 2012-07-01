@@ -45,7 +45,7 @@
 </style>
 <h1><img src="//translatasaurus.appspot.com/static/hangouts-logo.png" 
     alt="Google+ Hangouts Logo" height="50" width="50">Starter App</h1>
-<div style="float: left; padding: 0px 20px; border-right: 1px solid #EEE">
+<div> 
   <p>Collaborate with your friends to count to a big number!</p>
   <dl>
     <dt>Current count:</dt>
@@ -60,7 +60,7 @@
       onClick="resetButtonClick()"/>
   <textarea id="txt"></textarea>
 </div>
-<div style="float: left; padding: 0px 20px">
+<div>
   <p>Fetch some JSON from main.py</p>
   <dl>
     <dt>Message:</dt>
