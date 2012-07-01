@@ -32,8 +32,6 @@
      http://localhost/app.js for faster single user development -->
 <script src="//translatasaurus.appspot.com/static/app.js"></script>
 
-<body>
-
 <h1><img src="//translatasaurus.appspot.com/static/hangouts-logo.png" 
     alt="Google+ Hangouts Logo" height="50" width="50">Starter App</h1>
 <div border-right: 1px solid #EEE">
@@ -59,7 +57,6 @@
   <input type=button value="Get Message" id="getMessageButton"
       onClick="getMessageClick()"/>
 </div>
-</body>
 
 ]]></Content>
 </Module>
