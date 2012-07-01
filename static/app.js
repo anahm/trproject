@@ -46,6 +46,19 @@ function setText(element, text) {
       '';
 }
 
+function onMessageReceived(event) {
+  try {
+     var data = JSON.parse(event.message);
+     var langSelect = document.getElementById('langselect');
+     var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+     document.getElementById('txt').setAttribute('lang', data[1]);
+     document.getElementById('txt').value = data[0];
+     send(data[0], data[1], selectedLang);
+  } catch (e) {
+     console.log(e);
+  }
+}
+
 function getMessageClick() {
   console.log('Requesting message from main.py');
   var http = new XMLHttpRequest();
@@ -62,13 +75,17 @@ function getMessageClick() {
   http.send();
 }
 
-function xmlhttpPost(strURL, text) {
-  var xmlHttpReq = false;
-  var self = this;
-  self.xmlHttpReq = new XMLHttpRequest();
-  self.xmlHttpReq.open('POST', strURL, true);
-  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  self.xmlHttpReq.send(text);
+function send(strURL, text, transfrom, transto) {
+//  var xmlHttpReq = false;
+//  var self = this;
+//  self.xmlHttpReq = new XMLHttpRequest();
+//  self.xmlHttpReq.open('POST', strURL, true);
+//  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//  self.xmlHttpReq.send(text);
+  jQuery.ajax({
+	type: "POST",
+	data: {textString : text, translatefrom : transfrom, translateto : transto}});
+
 }
 
 function updateStateUi(state) {
@@ -87,11 +104,17 @@ function updateParticipantsUi(participants) {
   setText(participantsListElement, participants.length.toString());
 }
 
+var langSelect = document.getElementById('langselect');
+var selectedLang = langSelect.options[langSelect.selectedIndex].value;
 var mic = document.getElementById('mic');
 mic.onfocus = mic.blur;
+mic.setAttribute('lang', selectedLang);
 mic.onwebkitspeechchange = function(event) {
+        
 	document.getElementById('txt').value = mic.value;
-	xmlhttpPost("/translate2.py", mic.value);
+	//xmlhttpPost("/translate2.py", mic.value);
+        gapi.hangoutdata.sendMessage(
+	   JSON.stringify([mic.value, selectedLang]));
 };
 
 // A function to be run at app initialization time which registers our callbacks

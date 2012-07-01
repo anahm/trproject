@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<?xml-stylesheet href="style.css" ?>
 <Module>
     <!-- /*
  * Copyright (c) 2011 Google Inc.
@@ -29,7 +28,21 @@
      Tip: You can load it from a local web server such as
      http://localhost/app.js for faster single user development -->
 <script src="//translatasaurus.appspot.com/static/app.js"></script>
+<style type="text/css">
+<!--
+#mic {
+	color:transparent;
+	background-color:transparent;
+	border:0px;
+	width:15px;
 
+	-webkit-transform: scale(3.0, 3.0);
+	-moz-transform: scale(3.0, 3.0);
+	-ms-transform: scale(3.0, 3.0);
+	transform: scale(3.0, 3.0);
+}	
+-->
+</style>
 <h1><img src="//translatasaurus.appspot.com/static/hangouts-logo.png" 
     alt="Google+ Hangouts Logo" height="50" width="50">Starter App</h1>
 <div style="float: left; padding: 0px 20px; border-right: 1px solid #EEE">
@@ -45,6 +58,7 @@
       onClick="countButtonClick()"/>
   <input type=button value="Reset" id="resetButton"
       onClick="resetButtonClick()"/>
+  <textarea id="txt"></textarea>
 </div>
 <div style="float: left; padding: 0px 20px">
   <p>Fetch some JSON from main.py</p>
@@ -55,6 +69,11 @@
   <input type=button value="Get Message" id="getMessageButton"
       onClick="getMessageClick()"/>
 </div>
+Select Language:
+<select id="langselect">
+	<option selected value="en">English </option>
+        <option selected value="ko">Korean </option>
+</select>
 <div style="clear: both;"></div>
 
 ]]></Content>
