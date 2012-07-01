@@ -3,6 +3,13 @@ html {
     text-size: 13em;
 }
 
+#mic_background {
+    background-color: red;
+    size:150px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 #mic{
 
 color:transparent;
