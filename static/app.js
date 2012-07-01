@@ -155,7 +155,7 @@ function micLoad(selectedLang) {
     var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
-    //    console.log(selectedLang);
+        console.log(selectedLang);
 
 //        mic.setAttribute('lang', selectedLang);
 		mic.lang = selectedLang;
@@ -283,7 +283,7 @@ function init() {
 
   var apiReady = function(eventObj) {
     if (eventObj.isApiReady) {
-     // console.log('API is ready');
+      console.log('API is ready');
 
       gapi.hangout.data.onStateChanged.add(function(eventObj) {
         updateStateUi(eventObj.state);
@@ -307,7 +307,7 @@ function init() {
       }
 
       micLoad(selectedLang);
-      //console.log("complete!");
+      console.log("complete!");
 
       api.hangout.onApiReady.remove(apiReady);
     }
