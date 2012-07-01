@@ -153,7 +153,7 @@ function setText(element, text) {
 
 function micLoad(selectedLang) {
 }
-    var langSelect = document.getElementById('langselect');
+    var langSelect = $('#langselect');
       var selectedLang = langSelect.options[langSelect.selectedIndex].value;
 
 
