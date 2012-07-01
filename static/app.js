@@ -15,6 +15,28 @@
 */
 var serverPath = '//translatasaurus.appspot.com/';
 
+var langSelect = document.getElementById('langselect');
+if (langSelect != null) {
+    var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+} else {
+    alert("blargl, need to fix lang");
+    var selectedLang = 'en';
+}
+var mic = document.getElementById('mic');
+if (mic != null) {
+    mic.onfocus = mic.blur;
+    mic.setAttribute('lang', selectedLang);
+    mic.onwebkitspeechchange = function(event) {
+        
+	    document.getElementById('txt').value = mic.value;
+	    //xmlhttpPost("/translate2.py", mic.value);
+        gapi.hangoutdata.sendMessage(
+        JSON.stringify([mic.value, selectedLang]));
+    };
+} else {
+    alert("blargl, need to fix mic");
+}
+
 // The functions triggered by the buttons on the Hangout App
 function countButtonClick() {
   // Note that if you click the button several times in succession,
@@ -106,12 +128,14 @@ function setText(element, text) {
 
 function onMessageReceived(event) {
   try {
+     alert("we got something!");
      var data = JSON.parse(event.message);
      var langSelect = document.getElementById('langselect');
      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
      getTranslatedText(data[0], data[1], selectedLang);
+     alert("hey now");
   } catch (e) {
      console.log(e);
   }
@@ -123,7 +147,7 @@ function onMessageReceived(event) {
           });
 
       function onLoadTransliterate() {
-        if (selectedLang.equals("zh")) {
+        if (selectedLang == "zh") {
         var options = {
             sourceLanguage:
                 google.elements.transliteration.LanguageCode.ENGLISH,
@@ -196,19 +220,6 @@ function updateParticipantsUi(participants) {
   var participantsListElement = document.getElementById('participants');
   setText(participantsListElement, participants.length.toString());
 }
-
-var langSelect = document.getElementById('langselect');
-var selectedLang = langSelect.options[langSelect.selectedIndex].value;
-var mic = document.getElementById('mic');
-mic.onfocus = mic.blur;
-mic.setAttribute('lang', selectedLang);
-mic.onwebkitspeechchange = function(event) {
-        
-	document.getElementById('txt').value = mic.value;
-	//xmlhttpPost("/translate2.py", mic.value);
-        gapi.hangoutdata.sendMessage(
-	   JSON.stringify([mic.value, selectedLang]));
-};
 
 // A function to be run at app initialization time which registers our callbacks
 function init() {
