@@ -73,6 +73,7 @@ Search:
 
 </select>
 <input type=button value="find" onClick="search()"/>
+<div id="result">
 <div style="clear: both;"></div>
 
 ]]></Content>
