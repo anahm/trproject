@@ -53,7 +53,7 @@ function onMessageReceived(event) {
      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
-     send(data[0], data[1], selectedLang);
+     getTranslatedText(data[0], data[1], selectedLang);
   } catch (e) {
      console.log(e);
   }
@@ -73,19 +73,6 @@ function getMessageClick() {
     }
   }
   http.send();
-}
-
-function send(strURL, text, transfrom, transto) {
-//  var xmlHttpReq = false;
-//  var self = this;
-//  self.xmlHttpReq = new XMLHttpRequest();
-//  self.xmlHttpReq.open('POST', strURL, true);
-//  self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//  self.xmlHttpReq.send(text);
-  jQuery.ajax({
-	type: "POST",
-	data: {textString : text, translatefrom : transfrom, translateto : transto}});
-
 }
 
 function getTranslatedText(text, transfrom, transto) {
