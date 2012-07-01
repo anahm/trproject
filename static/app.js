@@ -144,8 +144,8 @@ function setText(element, text) {
       '';
 }
 
-function micLoad() {
-    var mic = $('$mic');
+function micLoad(selectedLang) {
+    var mic = $('#mic');
     if (mic != null) {
         mic.onfocus = mic.blur;
         mic.setAttribute('lang', selectedLang);
@@ -164,8 +164,6 @@ function onMessageReceived(event) {
   alert("on message received");
   try {
      var data = JSON.parse(event.message);
-     var langSelect = document.getElementById('langselect');
-     var selectedLang = langSelect.options[langSelect.selectedIndex].value;
      document.getElementById('txt').setAttribute('lang', data[1]);
      document.getElementById('txt').value = data[0];
      getTranslatedText(data[0], data[1], selectedLang);
@@ -277,10 +275,16 @@ function init() {
       });
 
       updateStateUi(gapi.hangout.data.getState());
-      console.log("state ui..");
       updateParticipantsUi(gapi.hangout.getParticipants());
-      console.log("where i would add mic load");
-      micLoad();
+
+      var langSelect = document.getElementById('langselect');
+      var selectedLang = langSelect.options[langSelect.selectedIndex].value;
+
+      if (selectedLang != null) {
+      console.log("selectedlagn complete?");
+      }
+
+      micLoad(selectedLang);
       console.log("complete!");
 
       api.hangout.onApiReady.remove(apiReady);
